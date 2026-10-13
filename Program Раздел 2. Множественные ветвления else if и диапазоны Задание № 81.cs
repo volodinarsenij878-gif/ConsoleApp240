@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Program81
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            Console.Write("Введите крепость напитка в градусах: ");
+            string? input = Console.ReadLine();
+
+            if (double.TryParse(input, out double strength) && strength >= 0)
+            {
+                string category;
+
+                if (strength == 0)
+                    category = "Безалкогольный";
+                else if (strength <= 8)      // покрывает диапазон 0.1–8
+                    category = "Слабоалкогольный";
+                else if (strength <= 25)     // покрывает диапазон 8.1–25
+                    category = "Среднеалкогольный";
+                else                          // strength > 25
+                    category = "Крепкий";
+
+                Console.WriteLine($"Категория напитка: {category}");
+            }
+            else
+            {
+                Console.WriteLine("Ошибка ввода. Пожалуйста, введите неотрицательное число.");
+            }
+        }
+    }
+}
